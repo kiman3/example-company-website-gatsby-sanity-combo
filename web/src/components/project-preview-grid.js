@@ -4,19 +4,18 @@ import ProjectPreview from './project-preview'
 
 import styles from './project-preview-grid.module.css'
 
+function move(elem){
+  document.addEventListener('mousemove', function(e){
+    const moveable = document.querySelectorAll(elem);
+    moveable.style = 'translate(' + e.clientX + 'px ,' + e.clientY + 'px)';
+  });
+}
+move('moveable');
+
 function ProjectPreviewGrid (props) {
   return (
     <div className={styles.root}>
-      {props.title && (
-        <h2 className={styles.headline}>
-          {props.browseMoreHref ? (
-            <Link to={props.browseMoreHref}>{props.title}</Link>
-          ) : (
-            props.title
-          )}
-        </h2>
-      )}
-      <ul className={styles.grid}>
+      <ul className={styles.ul}>
         {props.nodes &&
           props.nodes.map(node => (
             <li key={node.id}>
@@ -24,19 +23,18 @@ function ProjectPreviewGrid (props) {
             </li>
           ))}
       </ul>
-      {props.browseMoreHref && (
-        <div className={styles.browseMoreNav}>
-          <Link to={props.browseMoreHref}>Browse more</Link>
-        </div>
-      )}
+      <div className={styles.axis}>
+        <span className={styles.xStart}>Past</span>
+        <span className={styles.xEnd}>Present</span>
+        <span className={styles.yStart}>Digital</span>
+        <span className={styles.yEnd}>Analog</span>
+      </div>
     </div>
   )
 }
 
 ProjectPreviewGrid.defaultProps = {
-  title: '',
   nodes: [],
-  browseMoreHref: ''
 }
 
 export default ProjectPreviewGrid

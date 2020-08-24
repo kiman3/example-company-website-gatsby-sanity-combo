@@ -6,13 +6,36 @@ import { imageUrlFor } from '../lib/image-url'
 import BlockContent from './block-content'
 import Container from './container'
 import RoleList from './role-list'
+import classNames from 'classnames';
 
 import styles from './project.module.css'
 
 function Project (props) {
-  const { _rawBody, title, categories, mainImage, members, publishedAt, relatedProjects } = props
+  const { _rawBody, title, typology, categories, mainImage, members, publishedAt, relatedProjects } = props;
+
+  const titleStyles = classNames(
+    {[styles.title]: true, 'moveableY': true}
+  )
+
+  document.addEventListener('mousemove', function(e){
+    const moveableY = document.querySelectorAll('.moveableY');
+    for (let i = 0; i < moveableY.length; i++) {
+      moveableY[i].style.transform = 'translate(' + e.clientX + 'px ,' + e.clientY + 'px)';
+      moveableY[i].style.opacity = '1';
+    }
+  });
+
   return (
     <article className={styles.root}>
+      <header className={styles.header}>
+        <div className={styles.headerWrapper}>
+          <Link className={styles.homeLink} to='/' activeClassName="active"><span>&larr;</span> Index</Link>
+          <h1 className={styles.subTitle}>{title}</h1>
+          <div>{typology}</div>
+          <div>{format(new Date(publishedAt), 'YYYY')}</div>
+          <div>{typology}</div>
+        </div>
+      </header>
       {props.mainImage && mainImage.asset && (
         <div className={styles.mainImage}>
           <img
@@ -23,12 +46,15 @@ function Project (props) {
               .url()}
             alt={mainImage.alt}
           />
+          <div className={styles.clip}>
+            <div className={titleStyles}><span>{title}</span></div>
+          </div>
         </div>
       )}
       <Container>
         <div className={styles.grid}>
           <div className={styles.mainContent}>
-            <h1 className={styles.title}>{title}</h1>
+            
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
           <aside className={styles.metaContent}>

@@ -19,6 +19,25 @@ export default {
       }
     },
     {
+      name: 'typology',
+      title: 'Typology',
+      type: 'string'
+    },
+    {
+      name: 'xPos',
+      title: 'X position',
+      type: 'number',
+      description: 'Horizontal position of project on index. 0–100.',
+      validation: Rule => Rule.required().min(0).max(100)
+    },
+    {
+      name: 'yPos',
+      title: 'Y position',
+      type: 'number',
+      description: 'Vertical position of project on index. 0–100.',
+      validation: Rule => Rule.required().min(0).max(100)
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       description: 'You can use this field to schedule projects where you show them',

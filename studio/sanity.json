@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "9nhae6b7",
+    "projectId": "ln03lsni",
     "dataset": "production"
   },
   "project": {
-    "name": "Gatsby Demo",
+    "name": "Index",
     "basePath": "/"
   },
   "plugins": [

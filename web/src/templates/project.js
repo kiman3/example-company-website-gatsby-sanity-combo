@@ -11,6 +11,9 @@ export const query = graphql`
     project: sanityProject(id: { eq: $id }) {
       id
       publishedAt
+      xPos
+      yPos
+      typology
       categories {
         _id
         title

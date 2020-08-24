@@ -43,11 +43,8 @@ function LayoutContainer (props) {
         return (
           <Layout
             {...props}
-            showNav={showNav}
             companyInfo={data.companyInfo}
             siteTitle={data.site.title}
-            onHideNav={handleHideNav}
-            onShowNav={handleShowNav}
           />
         )
       }}

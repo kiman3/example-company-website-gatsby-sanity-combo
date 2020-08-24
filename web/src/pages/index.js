@@ -16,10 +16,13 @@ export const query = graphql`
       keywords
     }
 
-    projects: allSanityProject(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
+    projects: allSanityProject(sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
           id
+          xPos
+          yPos
+          typology
           mainImage {
             crop {
               _key
@@ -118,19 +121,10 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
+        <h1 hidden>{site.title}</h1>
         {projectNodes && (
           <ProjectPreviewGrid
-            title='Latest projects'
             nodes={projectNodes}
-            browseMoreHref='/projects/'
-          />
-        )}
-        {postNodes && (
-          <BlogPostPreviewGrid
-            title='Latest blog posts'
-            nodes={postNodes}
-            browseMoreHref='/blog/'
           />
         )}
       </Container>

@@ -3,32 +3,26 @@ import React from 'react'
 import Icon from './icons'
 import { cn } from '../lib/helpers'
 
+import srOnly from '../styles/layout.css'
 import styles from './header.module.css'
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
+const Header = ({ siteTitle }) => (
   <div className={styles.root}>
     <div className={styles.wrapper}>
-      <h1 className={styles.branding}>
+      <h1 className={styles.titleMain}>
         <Link to='/'>{siteTitle}</Link>
       </h1>
 
-      <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
-        <Icon symbol='hamburger' />
-      </button>
-
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
+      <nav className={styles.nav}>
         <ul>
           <li>
-            <Link to='/about/'>About</Link>
+            <Link to='/' activeClassName="active">Projects</Link>
           </li>
           <li>
-            <Link to='/projects/'>Projects</Link>
+            <Link to='/texts/' activeClassName="active">Texts</Link>
           </li>
           <li>
-            <Link to='/blog/'>Blog</Link>
-          </li>
-          <li>
-            <Link to='/contact/'>Contact</Link>
+            <Link to='/about/' activeClassName="active">About</Link>
           </li>
         </ul>
       </nav>

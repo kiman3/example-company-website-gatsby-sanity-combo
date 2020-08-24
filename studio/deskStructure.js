@@ -31,9 +31,9 @@ export default () =>
         .schemaType('project')
         .child(S.documentTypeList('project')),
       S.listItem()
-        .title('Blog posts')
+        .title('Texts')
         .schemaType('post')
-        .child(S.documentTypeList('post').title('Blog posts')),
+        .child(S.documentTypeList('post').title('Texts')),
       S.listItem()
         .title('Pages')
         .child(
@@ -49,15 +49,6 @@ export default () =>
                     .documentId('about')
                 )
                 .icon(FaFile),
-              S.listItem()
-                .title('Contact')
-                .child(
-                  S.editor()
-                    .id('contactPage')
-                    .schemaType('page')
-                    .documentId('contact')
-                )
-                .icon(FaFile)
             ])
         ),
       S.listItem()
